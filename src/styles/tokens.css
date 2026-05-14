@@ -1,0 +1,76 @@
+:root{
+--primary-950: #887e5c;
+--primary-900: #988d6f;
+--primary-800: #a79d81;
+--primary-700: #b6ad94;
+--primary-600: #c5bda7;
+--primary-500: #d4cdba;
+--primary-400: #e4ddca;
+--primary-300: #f3eccf;
+--primary-200: #f5f2d2;
+--primary-100: #f7f5e0;
+--primary-50: #f9f8ee;
+
+--secundary-950:#2d1f15;
+--secundary-900:#372519;
+--secundary-800:#412b1d;
+--secundary-700:#4a3122;
+--secundary-600:#543726;
+--secundary-500:#5e3d2a;
+--secundary-400:#86674b;
+--secundary-300:#a58a75;
+--secundary-200:#c3ae9f;
+--secundary-100:#E1D1CA;
+--secundary-50:#F4EBE6;
+
+--tertiary-950: #613503;
+--tertiary-900: #723D03;
+--tertiary-800: #834504;
+--tertiary-700: #954E04;
+--tertiary-600: #A65605;
+--tertiary-500: #B75F06;
+--tertiary-400: #E68E3C;
+--tertiary-300: #EEB779;
+--tertiary-200: #F2CCA5;
+--tertiary-100: #F6E2D1;
+--tertiary-50:  #F9F1E6;
+
+--white: #fff;
+--black: #000;
+--gray-950: #101010;
+--gray-900: #262626;
+--gray-800: #3B3B3B;
+--gray-700: #515151;
+--gray-600: #676767;
+--gray-500: #7D7D7D;
+--gray-400: #929292;
+--gray-300: #A8A8A8;
+--gray-200: #BEBEBE;
+--gray-100: #D4D4D4;
+--gray-50:  #E9E9E9;
+
+/* Typografy */
+
+--main-font: Helvetica, Arial, sans-serif;
+--secondary-font: Calibri, Helvetica, Arial;
+
+/* Font weights crudos */
+
+--font-weight-light: 300;
+--font-weight-regular: 400;
+--font-weight-bold: 700;
+
+
+--fs-xxxxl: 5rem; /* Ultra grande */
+--fs-xxxl:  4rem; /* Súper grande */
+--fs-xxl:   3rem; /* Extra grande */
+--fs-xl:    2.5rem; /* Muy grande */
+--fs-lg:    2rem; /* h1 */
+--fs-md:    1.5rem; /* Mediano */
+--fs-sm:    1.25rem; /* Pequeño */
+--fs-xs:    1rem; /* Base*/
+--fs-xxs:   0.875rem; /* Muy pequeño 14px */
+--fs-xxxs:  0.75rem; /* extra pequeño 12px */
+--fs-xxxxs: 0.5rem;  /*Minimo 8px*/
+
+}
