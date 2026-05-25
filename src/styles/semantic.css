@@ -11,7 +11,7 @@
     /* ========= BACKGROUND  ========== */
 
     --semantic-background: var(--color-white); /*Fondo de toda la aplicacion*/
-    --semantic-surface: var(--color-gary-400); /*Fondo de modales,cards,containers*/
+    --semantic-surface: var(--color-gray-400); /*Fondo de modales,cards,containers*/
 
     --semantic--surface-muted: var(--color-gray-200); /*Zonas secundarias, con menos importancia*/
 

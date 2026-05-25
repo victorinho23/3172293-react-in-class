@@ -2,9 +2,44 @@ export default function Input({
     label,
     htmlFor,
     type = "text",
+    variant="secondary",
+    size="sm",
     ...props
 
 }){
+    const variants = {
+        // Estos valores deben ser con variables
+        primary: `
+            border border-brand
+            bg-yellow-950
+        `,
+        secondary: `
+            border border-brand
+            bg-background
+        `,
+        tertiary: `
+            border border-purple-950
+        
+        `,
+    }
+
+    const sizes = {
+        sm: `
+            h-8
+            
+        `,
+        md: `
+            h-10
+        
+        `,
+        lg: `
+           h-12
+           
+        
+        `,
+    }
+
+   
 
     return(
         <div className="w-80">
@@ -12,13 +47,21 @@ export default function Input({
             {/* Label*/}
 
         <label 
+            // El html for cuando es largo se hace con kebab-case
             htmlFor={htmlFor}
-            className="
+            className={`
                 block
                 text-caption
-                mb-1
                 text-secondary
-            "
+                ${
+                  size === "sm"
+                  ? "-mb-1"
+                  : size === "md"
+                  ? "mb-0"
+                  : "mb-1"
+                }
+                 
+            `}
 
             >
             {label} 
@@ -56,21 +99,25 @@ export default function Input({
         {/* Input visual */}
 
         <input 
-        
+        id={htmlFor}
         type={type}
-        className="
+        className={`
+            relative
             w-full
-            h-10
             rounded-md
-            border border-black
-            px-4
+            border
             text-body
             
             focus:outline-none
+            px-4
             focus:ring-2
             focus:ring-ring
             focus:ring-brand
-        "
+            ${variants[variant]}
+            ${sizes[size]}
+            
+            
+        `}
         {...props}
 
         />
