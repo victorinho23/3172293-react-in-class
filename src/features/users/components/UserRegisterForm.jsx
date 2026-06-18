@@ -1,11 +1,20 @@
 // User regtister form para registrarn un usuario
 import { useState, useEffect } from "react";
-import {Input, Select, CheckBox, Button} from "@/shared";
-import { getDocumentTypes } from "@/service/selectServices";
+import {Input, Select, Checkbox, Button, IconButton} from "@/shared";
+import { getDocumentTypes } from "@/services/selectServices";
+import {useNavigate } from "react-router-dom"
+import { userSchema } from "../schemas/userSchema";
 
 export default function UserRegisterForm(){
     // Estado del formulario
-    
+
+    const navigate = useNavigate();
+
+    // Estado del error
+
+    const [errors, setErrors] = useState({});   
+
+
     const [formData, setFormData] = useState({
         userName: "",
         userEmail: "",
@@ -35,9 +44,18 @@ export default function UserRegisterForm(){
 
             // Se actualiza unicamente lo que cambio
 
-            [name]: type === "checkbox" ? checked: value
+            [name]: type === "checkbox" ? checked: value,
     }))
-}
+};
+
+    // const handleNameChange = (e) => {
+    //     const value = e.target.value.trim();
+
+    //     if (value === ""){
+    //         console.log("El nombre no puede estar vacio")
+    //     }
+            
+    // };
 
     const handleSubmit = async (e) => {
         // Evita que el formulario recargue la pagina
@@ -53,7 +71,7 @@ export default function UserRegisterForm(){
     if (!result.success){
         // Objeto donde almacenaremos los errores por campo
         const fieldErrors = {};
-    }
+    
 
     // Recorremos cada error generado por Zod
     result.error.issues.forEach((issue) => {
@@ -62,11 +80,45 @@ export default function UserRegisterForm(){
     fieldErrors[issue.path[0]] = issue.message;
     });
 
+    setErrors(fieldErrors);
+
+
     return;
 }
+    //Si la validacion pasa limpiamos errores previos
     setErrors({});
 
-}
+    // Activamos estado de envio(util para desahablitar el boton)
+    // setIsSubmmiting(true);
+
+    try{
+        // Llamamos al servicio frontend que consume la API
+        // result.data contiene los datos ya validados por Zod
+        // const response = await createUser(result.data)
+
+        // Log informativo para desarrollo
+        // console.log("Usuario creado", response);
+
+        // feedback basico al usuario
+        alert("Usuario creado correctamente");
+
+        // Navegamos la vista anterior
+        //navigate(-1) equivale a volver atras
+        navigate(-1)
+    } catch(error){
+
+        //Capturanmos errores de red o errores lanzados por el service
+        console.log("Error: ", error.message)
+        
+        alert(error.message)
+
+    } finally{
+        // Pase lo que pase, desactivamos el estado de envio
+
+    // setIsSubmmiting(false)
+    }
+
+};
 
     const [documentTypes, setDocumentTypes] = useState([])
     
@@ -78,109 +130,162 @@ export default function UserRegisterForm(){
 
 
     return(
-        <div>
-            <Input 
+        <div className="grid items-center justify-center">
+            <h1 className="mx-auto my-12 text-title font-bold">Registro de usuarios</h1>
+
+            <form className="grid"
+                action=""
+                onSubmit={handleSubmit}
+                        >
+
+               
+               
+                <Input 
                 label="Nombre"
+                name="userName"
                 type="text"
+                value={formData.userName}
                 placeholder="Escribe tu nombre"
                 htmlFor= "user-name"
                 variant="secondary"
+                onChange={handleChange}
+                error={errors.userName}
 
-            />
+                />
 
-            <Input 
-                label="Telefono"
-                type="tel"
-                placeholder="Escribe tu nombre"
-                htmlFor= "user-Phone"
-                variant="secondary"
-
-            />
-            <Input 
+                <Input 
                 label="Correo"
+                name="userEmail"
                 type="email"
+                value={formData.userEmail}
                 placeholder="Escribe tu Correo Electronico"
                 htmlFor= "user-email"
                 variant="secondary"
+                onChange={handleChange}
+                error={errors.userEmail}
 
-            />
+
+                />
+                <Input 
+                    label="Telefono"
+                    name="userPhone"
+                    type="tel"
+                    value={formData.userPhone}
+                    placeholder="Escribe tu numero de telefono"
+                    htmlFor= "user-Phone"
+                    variant="secondary"
+                    onChange={handleChange}
+                    error={errors.userPhone}
 
 
+                    />
+    
+        
+        
+                <Select 
+                    label="Tipos de documento"
+                    name="userDocumentTypes"
+                    value={formData.userDocumentTypes}
+                    htmlFor="userDocumentTypes"
+                    options={documentTypes}
+                    onChange={handleChange}
+                    error={errors.userDocumentTypes}
 
-            <Select 
-                label="Tipos de documento"
-                name="userDocumentTypes"
-                htmlFor="userDocumentTypes"
-                options={documentTypes}
+
+                        
+                />
+    
+                <Input 
+                    label="Documento"
+                    name="userDocumentNumber"
+                    type="text"
+                    value={formData.userDocumentNumber}
+                    placeholder="Escribe tu numero documento"
+                    htmlFor= "user-document-number"
+                    variant="secondary"
+                    onChange={handleChange}
+                    error={errors.userDocumentNumber}
+                />
+    
+                <Input 
+                    label="Contraseña"
+                    name="userPassword"
+                    type="password"
+                    value={formData.userPassword}
+                    placeholder="Escribe tu contraseña"
+                    htmlFor= "user-password"
+                    variant="secondary"
+                    onChange={handleChange}
+                    error={errors.userPassword}
+
+        
+                />
+
+                <div className="grid gap-4  my-8">
+                    <Checkbox 
+                    id="isSuperUser"
+                    name="isSuperUser"
+                    label= "es super usuario"
+                    checked={formData.isSuperUser}
+                    onChange={handleChange} 
+                 /> 
+                <Checkbox
+                    id="isStaff"
+                    name="isStaff"
+                    label= "es staff"
+                    checked={formData.isStaff}
+                    onChange={handleChange} 
+                
+                /> 
+                <Checkbox
+                    id="isActive"
+                    name="isActive"
+                    label= "esta activo"
+                    checked={formData.isActive}
+                    onChange={handleChange} 
+    
+                />
+                </div>
+    
+                
+    
+                <div className="flex gap-6 items-center">
+                    <Button
+                        variant = "secondary"
+                        size ="sm"
+                        type = "submit"
+                        onClick={()=> console.log("Se oprimio el boton")}
+                    >
+                        Cancelar
+                    </Button>
+
+                    <Button
+                        variant= "primary"
+                        size="md"
+                        type= "submit"
+                        onClick={()=> console.log("Se oprimio el boton")}
+                    >
+                        Guardar
+                    </Button>
+
                     
-            />
+                </div>{/** Actions */}
 
-            <Input 
-                label="Documento"
-                type="text"
-                placeholder="Escribe tu numero documento"
-                htmlFor= "user-document-number"
-                variant="secondary"
-
-            />
-
-            <Input 
-                label="Contraseña"
-                type="password"
-                placeholder="Escribe tu contraseña"
-                htmlFor= "user-password"
-                variant="secondary"
-
-            />
-
-            <CheckBox 
-                id="isSuperUser"
-                name="isSuperUser"
-                label= "es super usuario"
-                checked={formData.isSuperUser}
-                onChange={handleChange} 
-             /> 
-            <CheckBox
-                id="isStaff"
-                name="isStaff"
-                label= "es staff"
-                checked={formData.isStaff}
-                onChange={handleChange} 
+                 <IconButton
+                    variant="primary"
+                    onClick={() => navigate(-1)}
+                >
+                </IconButton> 
+        
+            </form>
             
-            /> 
-            <CheckBox
-                id="isActive"
-                name="isActive"
-                label= "esta activo"
-                checked={formData.isActive}
-                onChange={handleChange} 
-
-            />
-
-            <div className="flex gap-6 items-center">
-                        <Button
-                            variant = "secondary"
-                            size ="sm"
-                            type = "submit"
-                            onClick={()=> console.log("Se oprimio el boton")}
-                        >
-                            Cancelar
-                        </Button>
-
-                        <Button
-                            variant = "primary"
-                            size ="md"
-                            type = "submit"
-                            onClick={()=> console.log("Seoprimio el boton")}
-                        >
-                            Guardar
-                        </Button>
-                    </div>{/** Actions */}
-
+            
+            
                    
 
         </div>
 
 
-    )
+ 
+)
 }

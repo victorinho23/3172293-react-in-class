@@ -11,7 +11,8 @@ export{default as DeleteCounter2} from "./components/DeleteCounter2";
 export {default as EffectDemo} from "./components/EffectDemo"
 export {default as CounterEffectDemo} from "./components/CounterEffectDemo"
 export {default as Select} from "./components/Select"
-export {default as CheckBox} from "./components/Checkbox"
+export {default as Checkbox} from "./components/Checkbox"
+export {default as IconButton} from "./components/IconButton"
 
 
 

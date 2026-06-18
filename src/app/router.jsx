@@ -4,7 +4,7 @@ import { AuthLayout, DashboardLayout} from "@/shared";
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <Navigate to="/dashboard" replace />
+        element: <Navigate to="/auth" replace />
     },
     {
         path: "/auth",
@@ -22,7 +22,7 @@ const router = createBrowserRouter([
         element: <DashboardLayout/>,
         children: [
 
-            {index: true, element: <h1>Hello1</h1>},
+            {index: true,},
             // {path: "/dashboard/auth", element: <h1>Hello2</h1>},
             // {path: "/dashboard/userList", element: <h1>Hello3</h1>},
 

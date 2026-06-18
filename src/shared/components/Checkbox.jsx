@@ -1,4 +1,4 @@
-export default function CheckBox({
+export default function Checkbox({
     id,
     name,
     label,
@@ -12,7 +12,9 @@ export default function CheckBox({
         <label 
             htmlFor={id}
             className = {`
-                flex-items-center gap-2
+                flex
+                items-center 
+                gap-2
                 text-sm
                 cursor-pointer
                 ${disabled ? "opacity-50 cursor-not allowed" : ""}
@@ -33,7 +35,7 @@ export default function CheckBox({
             />
 
             {/** Texto del checkbox */}
-            <span>{label}</span>
+            <span >{label}</span>
 
         </label>
 

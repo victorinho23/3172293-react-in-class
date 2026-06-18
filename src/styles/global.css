@@ -14,6 +14,7 @@
     /* ====== BACKGROUND ====== */
 
     --color-background: var(--semantic-background);
+
     --color-surface: var(--semantic-surface);
     --color-surface-muted: var(--semantic-surface-muted);
     --color-background-inverse: var(--semantic-background-inverse);
@@ -54,9 +55,9 @@
 
     /* ====== FONT WEIGHT ====== */
 
-    --font-heading: var(--semantic-font-weight-heading);
-    --font-body: var(--semantic-font-weight-body);
-    --font-label: var(--semantic-font-weigth-label);
+    --font-weigth-heading: var(--semantic-font-weight-heading);
+    --font-weigth-body: var(--semantic-font-weight-body);
+    --font-weigth-label: var(--semantic-font-weigth-label);
 
 
 

@@ -4,7 +4,7 @@ import authBg from "@/assets/images/bg-1.png";
 import {Input, 
     Button, 
     Select, 
-    CheckBox} from "@/shared";
+    Checkbox} from "@/shared";
 import {  getDocumentTypes  } from "../../services/selectServices";
 
 
@@ -77,7 +77,7 @@ export default function AuthLayout(){
                     
                     />
 
-                    <CheckBox/>
+                    <Checkbox/>
 
                     {/** Actions */}
 

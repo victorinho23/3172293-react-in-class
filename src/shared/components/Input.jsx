@@ -1,5 +1,6 @@
 export default function Input({
     label,
+    error,
     htmlFor,
     type = "text",
     variant="secondary",
@@ -42,103 +43,96 @@ export default function Input({
    
 
     return(
-        <div className="w-80">
+
+        <div className="w-80 grid" >
 
             {/* Label*/}
+            <label 
+                // El html for cuando es largo se hace con kebab-case
+                htmlFor={htmlFor}
+                className={`
+                    block
+                    text-caption
+                    text-secondary
+                    ${
+                      size === "sm"
+                      ? "-mb1"
+                      : size === "md"
+                      ? "mb-0"
+                      : "mb-1"
+                    }
+                     ${error ? "border-red-800" : "text-caption"}
 
-        <label 
-            // El html for cuando es largo se hace con kebab-case
-            htmlFor={htmlFor}
-            className={`
-                block
-                text-caption
-                text-secondary
-                ${
-                  size === "sm"
-                  ? "-mb-1"
-                  : size === "md"
-                  ? "mb-0"
-                  : "mb-1"
-                }
-                 
-            `}
+                
+                `}
 
+                >
+                {label} 
+            </label>
+
+            {/* Contenedor input */}
+
+            <div 
+                className="
+                relative
+            
+                grid
+                items-center
+                "
             >
-            {label} 
-        </label>
 
-        {/* Contenedor input */}
+            {/* Area Interactiva invisible de 48px */}
+                    
+            <div 
+                className="
+                absolute inset-0
+            "   
 
-        <div 
-            className="
-            relative
-            h-10
-            flex
-            items-center
-            "
-
-
-        >
-
-        {/* Area Interactiva invisible de 48px */}
-        
-        <div 
-            className="
-            absolute inset-0
-
-        
-        
-        "   
-
-            onMouseDown={(e) =>{
-                e.preventDefault();
-                e.currentTarget.nextSibling.focus();
-            }}
-        />
+                onMouseDown={(e) =>{
+                    e.preventDefault();
+                    e.currentTarget.nextSibling.focus();
+                }}
+            />
            
-        {/* Input visual */}
+            {/* Input visual */}
 
-        <input 
-        id={htmlFor}
-        type={type}
-        className={`
-            relative
-            w-full
-            rounded-md
-            border
-            text-body
-            
-            focus:outline-none
-            px-4
-            focus:ring-2
-            focus:ring-ring
-            focus:ring-brand
-            ${variants[variant]}
-            ${sizes[size]}
-            
-            
-        `}
-        {...props}
+            <input 
+                id={htmlFor}
+                type={type}
+                error={error}
+                className={`
+                w-full
+                rounded-md
+                border
+                text-body
+              
+                
+                focus:outline-none
+                px-4
+                focus:ring-2
+                focus:ring-ring
+                focus:ring-brand
+                ${variants[variant]}
+                ${sizes[size]}
+                ${error ? "border border-red-800": "border border-border"}
+            `}
+            {...props}
 
-        />
+            
+
+            />
+
+            <div className="">
+                {/** Feedback */}
+                {error && (
+                    <p className="text-caption text-red-800 place-self-start   " >{error}</p>
+                )}
+            </div>
+            
 
         </div>
 
-        
-
-
         </div>
-
-
-
-
-
-
-
-
-
-
-
 
     
     )
