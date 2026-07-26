@@ -1,6 +1,11 @@
 import { createBrowserRouter, Navigate } from "react-router-dom";
 import { AuthLayout, DashboardLayout} from "@/shared";
+import UserListPage from "../features/users/pages/UserListPage";
+import { UserRegisterForm } from "../features/users";
+import HomePage from "../features/home/components/pages/HomePage";
 
+
+ 
 const router = createBrowserRouter([
     {
         path: "/",
@@ -24,16 +29,26 @@ const router = createBrowserRouter([
 
             {index: true,},
             // {path: "/dashboard/auth", element: <h1>Hello2</h1>},
-            // {path: "/dashboard/userList", element: <h1>Hello3</h1>},
+            {path: "userList", element: <UserListPage/>},
+            {path: "userCreate", element: <UserRegisterForm/>},
+
+        ],
+    },
+
+    {
+        path: "/home",
+        element: <HomePage/>,
+        children: [
+
+            {index: true,},
+            // {path: "/dashboard/auth", element: <h1>Hello2</h1>},
+            // {path: "userList", element: <UserListPage/>},
+            // {path: "userCreate", element: <UserRegisterForm/>},
 
         ],
     },
 
 ]);
-
-
-
-
 
 
 export default router;

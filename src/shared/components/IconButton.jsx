@@ -1,32 +1,29 @@
-// src/shared/components/IconButton.jsx
-
+// src/shared/components/iconButton.jsx
 import React from "react";
 import clsx from "clsx";
 
-/**
- * IconButton
- * -Area tactil (hit area): tamaño de boton
- * -Area visible: tamaño del icono (controlado por weapper interno)
- */
 
-// React.formwardRef"puente para que el padre controle el DOM interno",
+/*
+ IconButton
+ Área táctil (hit area): tamaño del botón
+ -Áreaa visible: tamaño del ícono (controlado por wrapper interno)
+*/
 
+// React.forwardRef"puente para que el padre controle el DOM interno"
 
 export const IconButton = React.forwardRef(function IconButton(
     {
         children,
         onClick,
-        disbaled = false,
-        clasName = "",
+        disabled = false,
+        className = "",
         variant = "default",
-    
-        // Tamaños 
 
-        hitSize = 48, // px (area tactil)
+        //Tamaños
+        hitSize = 48, // px (área táctil)
         iconSize = 24, // px (icono visible)
 
-        // Accesibilidad 
-
+        //Accesibilidad
         ariaLabel,
 
         // Estados
@@ -37,63 +34,60 @@ export const IconButton = React.forwardRef(function IconButton(
     ref
 ) {
     const baseStyles = `
-        inline-flex items-center justify-center
+        inline*flex items-center justify-center
         rounded-full
-        transition-colors duration-200 
-        focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 
-        disabled:opacity-50 disabled:pointer-events-none;
-    `
+        transition-colors duration-200
+        focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2
+        disabled:opacity-50 disabled:pointer-events-none
+    `;
 
     const variants = {
-        default:`
-        text-neutral-700
-        hover:bg-neutral-200
-        focus-visible:ring-neutral-400
-             
-    `,
-
-    ghost: `
-        text-neutral-700 
-        hover:bg-neutral-100 
-        focus-visible:ring-blue-500
-    
-    `,
-
-    primary: `
-        text-white bg-blue
-        hover:bg-blue-700 
-        focus-visible:ring-blue-500
-    `,
+        default: `
+            text-neutral-700
+            hover:bg-neutral-400
+            focus-visible:ring-neutral-400
+        `,
+        ghost: `
+            text-neutral-600
+            hover:bg-neutral-100
+            focus-visible:ring-neutral-300
+        `,
+        primary: `
+            text-white bg-blue-600
+            hover:bg-blue-700
+            focus-visible:ring-blue-500
+            w-10
+        `
     };
 
-    return(
-        <button
-        ref={ref} 
-        type="button"
-        aria-label={ariaLabel}
-        disbaled={disbaled}
-        onClick={onClick}
-        className={clsx(baseStyles, variants[variant], clasName, {
-            "bg-neutral-300": isActive,
-        })}
-        style={{
-            width: `${hitSize}px`,
-            height: `${hitSize}px`
-        }}
-        {...props}
-        >
-
-            <span
-            style={{
-                width: `${iconSize}px`,
-                height: `${iconSize}px`,
+    return (
+        <button 
+            ref={ref}
+            type="button"
+            aria-label={ariaLabel}
+            disabled={disabled}
+            onClick={onClick}
+            className={clsx(baseStyles, variants[variant], className, {
+                "bg-neutral-300": isActive,
+            })}
+            styles={{
+                width: `${hitSize}px`,
+                height: `${hitSize}px`,
             }}
-            className="flex items-center justify-center"
+            {...props}
+        >
+            <span
+                style={{
+                    width: `${iconSize}px`,
+                    height: `${iconSize}px`,                    
+
+                }}
+                className="flex items-center justify-center"
             >
                 {children}
             </span>
         </button>
-    )
+    );
 });
 
 export default IconButton;

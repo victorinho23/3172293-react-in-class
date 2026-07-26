@@ -95,7 +95,7 @@ export default function AuthLayout(){
                             variant = "primary"
                             size ="md"
                             type = "submit"
-                            onClick={()=> console.log("Seoprimio el boton")}
+                            onClick={()=> console.log("Se oprimio el boton")}
                         >
                             Guardar
                         </Button>

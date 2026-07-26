@@ -6,7 +6,7 @@ export default function Select({
     error,
     htmlFor,
     name, 
-    onchange,
+    onChange,
     value,
     options = [],
 
@@ -33,7 +33,7 @@ export default function Select({
         {/** Select */}
 
         <select 
-            onChange={onchange}
+            onChange={onChange}
             value={value}
             name={name}
             id="htmlFor"

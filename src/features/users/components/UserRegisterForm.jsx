@@ -1,9 +1,11 @@
 // User regtister form para registrarn un usuario
 import { useState, useEffect } from "react";
-import {Input, Select, Checkbox, Button, IconButton} from "@/shared";
+import {Input, Select, Checkbox, Button, IconButton, FileInput} from "@/shared";
 import { getDocumentTypes } from "@/services/selectServices";
 import {useNavigate } from "react-router-dom"
 import { userSchema } from "../schemas/userSchema";
+import {User} from "lucide-react"
+
 
 export default function UserRegisterForm(){
     // Estado del formulario
@@ -133,7 +135,7 @@ export default function UserRegisterForm(){
         <div className="grid items-center justify-center">
             <h1 className="mx-auto my-12 text-title font-bold">Registro de usuarios</h1>
 
-            <form className="grid"
+            <form className="grid gap-2"
                 action=""
                 onSubmit={handleSubmit}
                         >
@@ -221,7 +223,7 @@ export default function UserRegisterForm(){
         
                 />
 
-                <div className="grid gap-4  my-8">
+                <div className="grid gap-2  my-8">
                     <Checkbox 
                     id="isSuperUser"
                     name="isSuperUser"
@@ -245,6 +247,22 @@ export default function UserRegisterForm(){
                     onChange={handleChange} 
     
                 />
+                <div>
+                    <h3>Cantidad maxima de archivos: 12</h3>
+                    <h3>Peso maximo: 10MB</h3>
+                </div>
+                
+
+                <FileInput
+                    value={formData.userImage}
+                    onChange={(files) => 
+                        setFormData((prev) => ({...prev, userImage: files}))
+                    }
+                    multiple={true}
+                />
+                    {errors.userImage && (
+                        <span className="text-red-500 text-sm"> {errors.userImage}</span>
+                    )}
                 </div>
     
                 
@@ -271,11 +289,6 @@ export default function UserRegisterForm(){
                     
                 </div>{/** Actions */}
 
-                 <IconButton
-                    variant="primary"
-                    onClick={() => navigate(-1)}
-                >
-                </IconButton> 
         
             </form>
             

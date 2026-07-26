@@ -12,7 +12,21 @@ export {default as EffectDemo} from "./components/EffectDemo"
 export {default as CounterEffectDemo} from "./components/CounterEffectDemo"
 export {default as Select} from "./components/Select"
 export {default as Checkbox} from "./components/Checkbox"
-export {default as IconButton} from "./components/IconButton"
+export {default as SearchField} from "./components/SearchField"
+export {IconButton} from "./components/IconButton"
+export {Dropdown,
+  DropdownTrigger,
+  DropdownItem,
+  DropdownContent,
+} from "./components/Dropdown"
+export {default as Switch} from "./components/Switch"
+export {default as DataTable} from "./components/DataTable"
+export {default as FileInput} from "./components/Fileinput"
+export {default as Card} from "./components/Card"
 
+
+// Layout components
+
+export {default as Navbar} from "./layouts/Navbar"
 
 
