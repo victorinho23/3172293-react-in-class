@@ -17,7 +17,7 @@ export const userService = {
             userPassword: hashedPassword,
         }
 
-        console.log("SERVICE DATA:", userData)
+        console.log("SERVICE DATA:", data)
 
         // En este punto, en una arquitectura real, deberian ocurrir
         // - Validaciones de reglas de negocio

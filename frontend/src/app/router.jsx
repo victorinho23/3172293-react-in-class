@@ -1,5 +1,5 @@
 import { createBrowserRouter, Navigate } from "react-router-dom";
-import { AuthLayout, DashboardLayout} from "@/shared";
+import { DashboardLayout} from "@/shared";
 import UserListPage from "../features/users/pages/UserListPage";
 import { UserRegisterForm } from "../features/users";
 import HomePage from "../features/home/components/pages/HomePage";
