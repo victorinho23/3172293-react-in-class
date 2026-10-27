@@ -10,10 +10,10 @@ import { Login } from "../features/auth";
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <Navigate to="/Login" replace />
+        element: <Navigate to="/login" replace />
     },
     {
-        path: "/Login",
+        path: "/login",
         element: <Login/>,
         children: [
             {

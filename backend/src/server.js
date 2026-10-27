@@ -16,5 +16,5 @@ const PORT = process.env.PORT || 4000;
 // Listen lebanta el servidor y queda a la espera de peticiónes
 app.listen(PORT, () => {
     // Log informatico indicando que el servidor esta corriendo
-    console.log(`Servidor  backend corriendo en http://localhost:{PORT}`)
+    console.log(`Servidor  backend corriendo en http://localhost:${PORT}`)
 })
