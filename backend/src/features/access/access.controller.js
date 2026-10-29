@@ -10,6 +10,7 @@ export const accessController = {
             userID,
             "list_user",
         );
+        
         res.json({
             userId,
             permission: "list_user",
